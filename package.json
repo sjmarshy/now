@@ -1,0 +1,19 @@
+{
+  "name": "now",
+  "version": "0.1.0",
+  "description": "A service to bug you repeatedly about what you're doing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:sjmarshy/now.git"
+  },
+  "author": "Sam Marshall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sjmarshy/n-and-t-now/issues"
+  },
+  "homepage": "https://github.com/sjmarshy/n-and-t-now"
+}
