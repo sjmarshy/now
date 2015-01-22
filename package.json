@@ -13,7 +13,11 @@
   "author": "Sam Marshall",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sjmarshy/n-and-t-now/issues"
+    "url": "https://github.com/sjmarshy/now/issues"
   },
-  "homepage": "https://github.com/sjmarshy/n-and-t-now"
+  "homepage": "https://github.com/sjmarshy/now",
+  "dependencies": {
+    "knex": "^0.7.3",
+    "sqlite3": "^3.0.4"
+  }
 }
