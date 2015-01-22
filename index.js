@@ -21,7 +21,7 @@ now.on('error', function (err) {
     console.warn(err);
 });
 
-if (settings.hasOwnProperty('debug') && settings.debug) {
+if (_isDebug(settings)) {
     now.on('tick', function (time) {
         now._debugLog();
     });
