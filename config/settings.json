@@ -1,0 +1,7 @@
+{
+    "debug": true,
+    "delay": 1,
+    "statsd": {
+        "host": "37.59.119.1"
+    }
+}

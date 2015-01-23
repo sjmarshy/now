@@ -2,14 +2,42 @@ require('mocha-testcheck').install();
 var assert = require('assert');
 var now    = require('../src/now');
 
+function isNumber(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 describe('now', function () {
+
+    describe('_nextTickInterval', function () {
+
+        check.it('returns a number',
+                [ gen.strictPosInt, gen.int ],
+                function (x, y) {
+                    assert(isNumber(now._nextTickInterval(x, y)));
+                });
+        
+    });
+    
 
     describe('_nextTwist', function () {
 
-        check.it('outputs an integer',
+        check.it('returns an integer',
                 [gen.int],
                 function (x) {
                     assert(Number.isInteger(now._nextTwist(x)));
+                });
+
+        check.it('returns positive',
+                [gen.int],
+                function (x) {
+                    var res = now._nextTwist(x);
+                    assert(Math.abs(res) === res);
+                });
+
+        check.it('is 32 bits long',
+                [gen.resized(1000, gen.strictPosInt)],
+                function (x) {
+                    assert(32 === now._nextTwist(x).toString(2).length);
                 });
 
         it('should return predictable results when given a seed',
@@ -28,7 +56,7 @@ describe('now', function () {
 
     describe('_getLowBitsOf', function () {
 
-        check.it('outputs an integer',
+        check.it('returns an integer',
                 [ gen.posInt, gen.posInt ],
                 function (x, n) {
 
