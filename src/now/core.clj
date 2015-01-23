@@ -15,6 +15,6 @@
         c (t/tick-channel t/ticks)]
     (loop [tick (blocking-get c) l start]
       (statsd/timing "now.debug.tick.interval" (- tick l))
-      (let [c (edit/launch tick)]
-        (save (blocking-get c)))
+      (let [in (edit/launch tick)]
+        (println (blocking-get in)))
       (recur (blocking-get c) tick))))

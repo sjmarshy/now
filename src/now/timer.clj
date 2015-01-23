@@ -4,16 +4,16 @@
   (:gen-class))
 
 (def magic-seed 1406331136)
-(def default-delay 1)
+(def default-delay 10)
 
 
 (defn next-tick-interval
   [last-tick average-delay]
-  (* 60 (r/get-exp-int last-tick average-delay)))
+  (r/get-exp-int last-tick average-delay))
 
 (defn next-tick
   [last-tick average-delay]
-  (+ last-tick (int (next-tick-interval last-tick average-delay))))
+  (int (+ last-tick (next-tick-interval last-tick average-delay))))
 
 (defn current-time
   []
@@ -50,7 +50,7 @@
 
 (defn tick-channel
   [ticks]
-  (let [c (async/chan) ]
+  (let [c (async/chan)]
     (async/go-loop [next-tick (get-next-tick ticks (current-time)) now (current-time)]
                    (if (< next-tick now)
                      (do
