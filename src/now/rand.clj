@@ -1,10 +1,12 @@
 (ns now.rand
+  (:require [cemerick.pprng :as rng])
   (:gen-class))
 
 (def IM 2147483647)
 
 (defn step-1 [seed]
-        (rand-int IM))
+  (let [r (rng/rng seed)]
+    (rng/int r IM)))
 
 (defn step-2 [seed]
         (/ (step-1 seed) IM))

@@ -3,7 +3,9 @@
   :url "https://github.com/sjmarshy/now"
   :license {:name "MIT"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
+                 [me.raynes/conch "0.8.0"]
+                 [com.cemerick/pprng "0.0.3"]]
   :source-paths ["./vendor/clj-statsd/src" "src"]
   :main now.core
   :target-path "target/%s"

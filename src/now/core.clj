@@ -1,5 +1,6 @@
 (ns now.core
   (:require [now.timer :as t]
+            [now.edit :as edit]
             [clj-statsd :as statsd]
             [clojure.core.async :as async :refer [<!! <! go]])
   (:import (ec.util))
@@ -14,5 +15,6 @@
         c (t/tick-channel t/ticks)]
     (loop [tick (blocking-get c) l start]
       (statsd/timing "now.debug.tick.interval" (- tick l))
-      (println tick " - " l " = " (- tick l))
+      (let [c (edit/launch tick)]
+        (save (blocking-get c)))
       (recur (blocking-get c) tick))))
