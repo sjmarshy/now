@@ -1,5 +1,4 @@
 (ns now.rand
-  (:require [cemerick.pprng :as rng])
   (:gen-class))
 
 (def IM 2147483647)
