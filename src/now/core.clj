@@ -5,7 +5,7 @@
             [clj-statsd :as statsd]
             [clojure.core.async :as async :refer [<!! <! go]])
   (:import (ec.util))
-  (:gen-class))
+  (:gen-class :main true))
 
 (defn blocking-get [channel]
   (<!! (go (<! channel))))
