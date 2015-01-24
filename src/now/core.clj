@@ -17,6 +17,7 @@
         c (t/tick-channel t/ticks)]
     (loop [tick (blocking-get c) l start]
       (statsd/timing "now.debug.tick.interval" (- tick l))
+      (println "difference" (- tick l))
       (let [in (edit/launch tick)]
         (let [status (blocking-get in)]
           (save/tick tick status)
